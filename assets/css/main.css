@@ -16,12 +16,8 @@
     font-weight: 600;
 }
 
-.row {
-    margin-right: 0em;
-    margin-left: 0em;
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
+.row {margin: 1em 0em 1em 0em;}
+.clearfix {clear: both;}
 
 .ui-autocomplete {
     max-height: 100px;
@@ -47,5 +43,3 @@ div.footer span.footer-stat {
     margin: 0 10px 0 0;
     font-size: 13px;
 }
-
-.clearfix {clear: both;}

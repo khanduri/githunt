@@ -6,31 +6,30 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="assets/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
-    <link rel=stylesheet href=assets/css/main.css>
+    <link rel=stylesheet href="assets/css/main.css">
 </head>
 <body>
     <div class="container">
 
         <div class="row">
-            <h1>Githunt</h1>
-            <p>Hunting the best Github projects</p>
-        </div>
-
-        <div class="row">
-
-            <div class="input-group">
-                <label class="btn-select btn" for="date-jump">
-                    <select name="date-jump" id="date-jump" class="repos-filter form-control">
-                        <option value="week" selected>Weekly</option>
-                        <option value="month">Monthly</option>
-                        <option value="year">Yearly</option>
-                    </select>
-                    <i class="fa fa-caret-down"></i>
-                </label>
-
-                <input id="language" placeholder="Search on all languages" class="search repos-filter form-control"/>
-
+            <div class="col-md-5">
+                <h1>Githunt</h1>
+                <p>Hunting the best Github projects</p>
             </div>
+
+            <div class="col-md-5">
+                    <fieldset class="form-group">
+                        <select name="date-jump" id="date-jump" class="repos-filter form-control">
+                            <option value="week" selected>Weekly</option>
+                            <option value="month">Monthly</option>
+                            <option value="year">Yearly</option>
+                        </select>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <input id="language" placeholder="Default search on all languages" class="search repos-filter form-control"/>
+                    </fieldset>
+            </div>
+
         </div>
 
         <div class="row">
@@ -45,9 +44,9 @@
         <script src="assets/js/jquery-ui.min.js"></script>
         <script src="assets/js/moment.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
-        <script src=assets/js/storage.js></script>
-        <script src=assets/js/main.js></script>
-        <script src=assets/js/language.js></script>
+        <script src="assets/js/storage.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="assets/js/language.js"></script>
     </div>
 </body>
 </html>

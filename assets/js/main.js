@@ -51,11 +51,11 @@ function HubTab() {
             title = '<h6 class="card-title"><a href="' + repo.html_url + '">' + repFullName + '</a></h6>'
             desc = '<small><p class="card-text">' + repFullDesc + '</p></small>'
 
-            forks = '<span class="card-link"><i class="fa fa-code-fork"></i>' +repo.forks_count +'</span>';
-            issues = '<span class="card-link"><i class="fa fa-commenting-o"></i>'+repo.open_issues +'</span>';
-            stars = '<span class="card-link"><i class="fa fa-star-o"></i>'+repo.stargazers_count +'</span>';
+            forks = '<span class="card-link"><i class="fa fa-code-fork"></i>&nbsp;' +repo.forks_count +'</span>';
+            issues = '<span class="card-link"><i class="fa fa-commenting-o"></i>&nbsp;'+repo.open_issues +'</span>';
+            stars = '<span class="card-link"><i class="fa fa-star-o"></i>&nbsp;'+repo.stargazers_count +'</span>';
 
-            owner_a = 'Owner: <a href="' + ownerUrl + '">' + ownerHandle + '</a>'
+            owner_a = 'by: <a href="' + ownerUrl + '">' + ownerHandle + '</a>'
             owner = '<ul class="list-group list-group-flush"><li class="list-group-item">' + owner_a + '</li></ul>';
 
             stats = '<span class="footer">' + owner + forks + issues + stars + '<footer>';
@@ -64,13 +64,12 @@ function HubTab() {
             html += '<div class="content-item card card-block">' + cardContent+ '</div>';
         });
 
-        var humanDate = moment(lowerDate).fromNow(),
-            formattedLower = moment(lowerDate).format('ll'),
+        var formattedLower = moment(lowerDate).format('ll'),
             formattedUpper = moment(upperDate).format('ll');
 
+        var timeRange = '<h4 data-date="' + lowerDate + '">' + formattedLower + ' &ndash; ' + formattedUpper + '</h4>';
 
-        var finalHtml = '<div class="content-batch"><h4 data-date="' + lowerDate + '">' + humanDate + ' - ' + formattedLower + ' &ndash; ' + formattedUpper + '</h4>' + html + '<div class="clearfix"></div></div></div>';
-
+        var finalHtml = '<div class="content-batch">' + timeRange + html + '<div class="clearfix"></div></div>';
         return finalHtml;
     }
 
