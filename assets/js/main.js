@@ -39,36 +39,37 @@ function HubTab() {
     function generateReposHtml(repositories, lowerDate, upperDate) {
         var html = '';
 
-        $(repositories).each(function (index, repository) {
+        $(repositories).each(function (index, repo) {
             // Make the name and description XSS safe
-            var repFullName = $('<div>').text(repository.full_name).html();
-            var repFullDesc = $('<div>').text(repository.description).html();
+            var repFullName = $('<div>').text(repo.name).html();
+            var ownerAvatarUrl = $('<div>').text(repo.owner.avatar_url).html();
+            var ownerHandle = $('<div>').text(repo.owner.login).html();
+            var ownerUrl = $('<div>').text(repo.owner.url).html();
+            var repFullDesc = $('<div>').text(repo.description).html();
 
-            html += '<div class="content-item">' +
-                '<div class="header"><a href="' + repository.html_url + '">' + repFullName + '</a></div>' +
-                '<p class="tagline">' + repFullDesc + '</p>' +
-                '<div class="footer">' +
-                '<span class="footer-stat">' +
-                '<i class="fa fa-code-fork"></i>' +
-                repository.forks_count +
-                '</span>' +
-                '<span class="footer-stat">' +
-                '<i class="fa fa-commenting-o"></i>' +
-                repository.open_issues +
-                '</span>' +
-                '<span class="footer-stat">' +
-                '<i class="fa fa-star-o"></i>' +
-                repository.stargazers_count +
-                '</span>' +
-                '</div>' +
-                '</div>';
+            img = '<img class="card-img-top" data-src="' + ownerAvatarUrl + '" alt="Card image cap">';
+            title = '<h6 class="card-title"><a href="' + repo.html_url + '">' + repFullName + '</a></h6>'
+            desc = '<small><p class="card-text">' + repFullDesc + '</p></small>'
+
+            forks = '<span class="card-link"><i class="fa fa-code-fork"></i>' +repo.forks_count +'</span>';
+            issues = '<span class="card-link"><i class="fa fa-commenting-o"></i>'+repo.open_issues +'</span>';
+            stars = '<span class="card-link"><i class="fa fa-star-o"></i>'+repo.stargazers_count +'</span>';
+
+            owner_a = 'Owner: <a href="' + ownerUrl + '">' + ownerHandle + '</a>'
+            owner = '<ul class="list-group list-group-flush"><li class="list-group-item">' + owner_a + '</li></ul>';
+
+            stats = '<span class="footer">' + owner + forks + issues + stars + '<footer>';
+
+            cardContent =  title + desc + stats;
+            html += '<div class="content-item card card-block">' + cardContent+ '</div>';
         });
 
         var humanDate = moment(lowerDate).fromNow(),
             formattedLower = moment(lowerDate).format('ll'),
             formattedUpper = moment(upperDate).format('ll');
 
-        var finalHtml = '<div class="content-batch"><h1 class="date-head" data-date="' + lowerDate + '">' + humanDate + ' - ' + formattedLower + ' &ndash; ' + formattedUpper + '</h1>' + html + '<div class="clearfix"></div></div></div>';
+
+        var finalHtml = '<div class="content-batch"><h4 data-date="' + lowerDate + '">' + humanDate + ' - ' + formattedLower + ' &ndash; ' + formattedUpper + '</h4>' + html + '<div class="clearfix"></div></div></div>';
 
         return finalHtml;
     }
