@@ -1,17 +1,10 @@
 /**
  * Hub Storage to assist in storing the filter to localStorage
  * and retrieving to populate back
- *
- * @returns {{persistFilters: persistFilters, populateFilters: populateFilters}}
- * @constructor
  */
 function HubStorage() {
 
-    /**
-     * Returns the storage object if available, otherwise
-     * a polyfill
-     * @returns {*}
-     */
+    // Returns the storage object if available, otherwise a polyfill
     var getStorage = function () {
         if (window.localStorage) {
             return window.localStorage;
@@ -23,10 +16,7 @@ function HubStorage() {
         }
     };
 
-    /**
-     * Persists the values of the provided input input selector
-     * @param selector`
-     */
+    // Persists the values of the provided input input selector
     var persistFilters = function (selector) {
         var storage = getStorage();
 
@@ -38,11 +28,7 @@ function HubStorage() {
         });
     };
 
-    /**
-     * Retrieves the values for the provided selector from localstorage
-     * and populates the fields back
-     * @param selector
-     */
+    // Retrieves values for provided selector from localstorage and populates fields back
     var populateFilters = function (selector) {
         var storage = getStorage(),
             anyPopulated = false;
@@ -62,28 +48,8 @@ function HubStorage() {
     };
 
     return {
-        /**
-         * Persist the fields matching the provided selector to local storage
-         * @param selector
-         */
-        persistFilters: function (selector) {
-            persistFilters(selector);
-        },
-
-        /**
-         * Populates the filters using the values stored in the localstorage
-         * @param selector
-         */
-        populateFilters: function (selector) {
-            return populateFilters(selector);
-        },
-
-        /**
-         * Returns the localStorageObject
-         * @returns {{setItem, getItem}}
-         */
-        getStorage: function () {
-            return getStorage();
-        }
+        persistFilters: function (selector) {persistFilters(selector);},
+        populateFilters: function (selector) {return populateFilters(selector);},
+        getStorage: function () {return getStorage();}
     };
 }
