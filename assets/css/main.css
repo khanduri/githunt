@@ -16,6 +16,10 @@
     font-weight: 600;
 }
 
+body {
+    background: #10496A;
+    color: #C6D4E0;
+}
 .row {margin: 1em 0em 1em 0em;}
 .clearfix {clear: both;}
 
@@ -32,6 +36,14 @@
     display: block;
     min-height: 280px;
     max-height: 400px;
+    background: #2C546B;
+}
+
+.content-item a {
+    color: #ffffff;
+}
+.content-item .list-group-item {
+    background: #486A7D;
 }
 
 .content-item .footer {
