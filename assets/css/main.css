@@ -17,8 +17,8 @@
 }
 
 body {
-    background: #10496A;
-    color: #C6D4E0;
+    background: #3b5998;
+    color: #b0bcd5;
 }
 .row {margin: 1em 0em 1em 0em;}
 .clearfix {clear: both;}
@@ -30,20 +30,24 @@ body {
 }
 
 .content-item {
-    width: 300px;
+    width: 32%;
+    margin: 6px;
     float: left;
-    margin: 10px;
     display: block;
     min-height: 280px;
     max-height: 400px;
-    background: #2C546B;
+    background: #5473B5;
 }
 
 .content-item a {
     color: #ffffff;
 }
 .content-item .list-group-item {
-    background: #486A7D;
+    background: #5473B5;
+}
+
+.card {
+    border: none;
 }
 
 .content-item .footer {

@@ -32,8 +32,8 @@ function HubTab() {
             var ownerUrl = $('<div>').text(repo.owner.url).html();
             var repFullDesc = $('<div>').text(repo.description).html();
 
-            img = '<img class="card-img-top" data-src="' + ownerAvatarUrl + '" alt="Card image cap">';
-            title = '<h6 class="card-title"><a href="' + repo.html_url + '">' + repFullName + '</a></h6>'
+            img = '<img src="'+ownerAvatarUrl+'" class="img-circle" width="40" height="40" />'
+            title = '<h5 class="card-title">'+img+'&nbsp;<a href="' + repo.html_url + '">' + repFullName + '</a></h5>'
             desc = '<small><p class="card-text">' + repFullDesc + '</p></small>'
 
             forks = '<span class="card-link"><i class="fa fa-code-fork"></i>&nbsp;' +repo.forks_count +'</span>';
@@ -52,7 +52,7 @@ function HubTab() {
         var formattedLower = moment(lowerDate).format('ll'),
             formattedUpper = moment(upperDate).format('ll');
 
-        var timeRange = '<h4 data-date="' + lowerDate + '">' + formattedLower + ' &ndash; ' + formattedUpper + '</h4>';
+        var timeRange = '<div class="alert alert-info"><h4 data-date="' + lowerDate + '">' + formattedLower + ' &ndash; ' + formattedUpper + '</h4></div>';
 
         var finalHtml = '<div class="content-batch">' + timeRange + html + '<div class="clearfix"></div></div>';
         return finalHtml;
@@ -150,6 +150,7 @@ function HubTab() {
                 $('.loading-more').removeClass('hide');
             },
             success: function (data) {
+              console.log(data);
                 var finalHtml = generateReposHtml(data.items, filters.dateRange.lower, filters.dateRange.upper);
                 $(mainContainer).append(finalHtml);
             },
